@@ -1,0 +1,142 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    padding:0.1em;
+    margin:0;
+    transform-style: preserve-3d;
+    border: solid black 1px;
+    
+}
+
+body{
+    width:100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gridcalendar{
+    display: grid;
+    //width:100vw;
+    //height:100vh;
+    grid-template-columns: repeat(7, minmax(50px, 1fr));
+    //grid-template-rows: repeat(7, minmax(50px, 1fr));
+    grid-gap:0.1em;
+    border-radius: 5px;
+    padding:0.2em;
+    .cells {
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        place-items: center;
+        text-align: center;
+        border-radius: 3px;
+        font: {family:Verdana; size:15px;}
+        //font-size: 20px;
+    }
+}
+
+.gridscroll{
+    grid-column: span 7;
+    display:flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    &::before{
+    text-align: center;
+    content: attr(caption);
+    position: absolute;
+    width:360px;
+    height: 50px;
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    z-index:-999;
+    display: block;
+    top: 0%;
+    border: none;
+
+
+    }
+}
+
+button{
+    width: 40px;
+    height:40px;
+    border-radius: 50%;
+    border: none;
+    transition: all 2s ease;
+    &:hover{
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 25px;
+        //background: transparent;//rgba(255,255,255,0.9);
+        color: red;
+        transition: all 2s ease;
+
+    }
+    &:active{
+        height:40px;
+        width:40px;
+        background-position-y: 70%;
+        background-size:cover;
+        background-color: red;
+        box-shadow: 20px 20px 35px red outset;
+        border: 1px solid red;
+        transform: rotate(360deg);
+        //filter:drop-shadow(10px 10px 15px red outset);
+        transition: all 2s ease;
+    }
+}
+
+.heading{
+    grid-column: span 7;
+    background:rgba(0, 0, 0, 0.2);
+    color: red;
+    font-size: 30px;
+    text-align: center;
+    padding: 0 0.2em;
+    font: {family:Garamond; size:25px;}
+    text-transform: uppercase;
+    
+    //transition: all 3s ease;
+}
+
+.weekdaylabel{
+    grid-column: span 7;
+    display: grid;
+    grid-template-columns: repeat(7,  minmax(50px, 1fr));
+    grid-gap:0.1em;
+    padding:0;
+
+    div{
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        place-items: center;
+        text-align: center;
+        font: {family:Verdana; size:12px; }
+        text-transform: capitalize;
+    }
+    
+}
+
+.cells{
+    &:hover{
+        cursor: pointer;
+        background: rgba(0, 0, 0,0.5);
+        color:white;
+        transition: all 1s ease;
+    }
+}
+
+.rightscroll{
+    background-image: url(/images/icons8-forward-button-48.png);
+    background-size: cover;
+    transition: all 2s ease;
+}
+
+.leftscroll{
+    background-image: url(/images/icons8-back-arrow-48.png);
+    background-size: cover;
+    transition: all 2s ease;
+}
